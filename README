@@ -1,0 +1,134 @@
+
+
+Assignment: CS 111 p4c - Spring 2017
+---------------------------------------------------------------------
+*Files included:
+Makefile with targets: build, clean, dist
+README
+lab4.c
+lab4c_tcp.c
+lab4c_tls.c
+
+---------------------------------------------------------------------
+Design choices and comments:
+Part C:
+Any invalid argument exit with status 1.
+No harm in supporting old args, but not required.
+Log just like in 4B - temp readings and commands from server
+Nothing should be echoed to stdout
+We may make --host and --id arguments take default values if we like.
+	(grading script will always pass those values)
+Guaranteed that port number will be the last argument.
+
+From part B:
+- commands currently echo to screen as typed, but piazza post said this is okay.
+Case handling:
+invalid command: log the error message in the file and exit
+-
+We should log the command STOP and START regardless of whether 
+	the program is generating reports or not.
+The log should have all the temperatures and all received commands.
+-
+Format of the "sample" when the button is pressed should be: "TIME_VALUE SHUTDOWN"
+	this line only be output to a log file if one is specified.
+	If the --log option is not given we SHOULD NOT output this line to stdout.
+
+---------------------------------------------------------------------
+*Citations/references/research:
+
+I referenced my own work from when I took CS 35L during Fall 2016
+	and CS 33 in Winter 2017,
+	and the notes/slides supplied by my TAs and professors for those classes.
+I also referenced the slides provided by my TA for this course.
+I also referenced the piazza posts for this class and slides from TAs.
+Also reused some code from previous projects in this class.
+----------------
+Part C:
+-
+https://stackoverflow.com/questions/21927309/how-do-you-use-getopt-with-non-option-arguments
+-
+http://fm4dd.com/openssl/sslconnect.htm
+-
+https://stackoverflow.com/questions/28509593/ssl-pending-read-and-write-with-non-blocking-sockets
+-
+https://stackoverflow.com/questions/8411168/changing-an-openssl-bio-from-blocking-to-non-blocking-mode
+-
+https://github.com/lundman/lion/blob/master/src/tls.c
+-
+https://stackoverflow.com/questions/5616092/non-blocking-call-for-reading-descriptor
+-
+http://www.serverframework.com/asynchronousevents/2010/10/using-openssl-with-asynchronous-sockets.html
+-
+cs.nmu.edu/~randy/Classes/CS442/SSL/ssl.cc
+-
+http://search.cpan.org/~sullr/IO-Socket-SSL-2.048/lib/IO/Socket/SSL.pod
+-
+http://www.cs.odu.edu/~cs772/fall08/lectures/ssl_programming.pdf
+-
+https://stackoverflow.com/questions/18728355/ssl-renegotiation-with-full-duplex-socket-communication
+-
+https://stackoverflow.com/questions/3952104/how-to-handle-openssl-ssl-error-want-read-want-write-on-non-blocking-sockets?rq=1
+-
+https://stackoverflow.com/questions/8332494/undefined-reference-to-openssl-functions-when-compiling-with-gcc-in-ubuntu-11-10
+-
+https://stackoverflow.com/questions/7698488/turn-a-simple-socket-into-an-ssl-socket
+-
+https://stackoverflow.com/questions/14489731/dont-understand-openssl-add-all-algorithms-method
+-
+https://www.cs.utah.edu/~swalton/listings/articles/ssl_client.c
+-
+https://wiki.openssl.org/index.php/Manual:SSL_set_fd(3)
+-
+http://h41379.www4.hpe.com/doc/83final/ba554_90007/ch04s03.html
+-
+http://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html
+-
+https://wiki.openssl.org/index.php/SSL/TLS_Client
+-
+https://wiki.openssl.org/index.php/Library_Initialization#OPENSSL_config
+-
+https://github.com/arjun372/CS111_Spring16/blob/master/Lab%204/TLS/tls_client.c
+-
+https://iotdk.intel.com/docs/master/mraa/gpio_8h.html#ac18f83fc915a25f06513dbd8ea0d4bad
+-
+https://iotdk.intel.com/docs/master/mraa/types_8h.html#a81d2c0ceb436893a10f1b6a302bdd5fb
+-
+https://iotdk.intel.com/docs/master/mraa/aio_8h.html
+-
+https://github.com/codeKaren/CS-111/blob/master/Lab%204/part3.c
+-
+https://iotdk.intel.com/docs/master/mraa/common_8h.html#a011c9349817fda6e65480dcf654b27ba
+-
+https://www.openssl.org/docs/manmaster/man7/ssl.html
+-
+https://stackoverflow.com/questions/18079340/using-getopt-in-c-with-non-option-arguments
+-
+
+
+
+----------------
+Part B:
+-
+https://en.wikipedia.org/wiki/C_date_and_time_functions
+-
+https://stackoverflow.com/questions/1531055/time-into-string-with-hhmmss-format-c-programming?rq=1
+-
+https://navinbhaskar.wordpress.com/2015/11/13/c-on-intel-edisongalileo-part1/
+-
+https://navinbhaskar.wordpress.com/2015/12/30/c-on-intel-edisongalileo-part2-buttons/
+-
+https://navinbhaskar.wordpress.com/2016/02/21/cc-on-intel-edisongalileo-part3-pwm/
+-
+https://navinbhaskar.wordpress.com/2016/04/25/cc-on-intel-edisongalileo-part4adc/
+-
+https://navinbhaskar.wordpress.com/2016/07/05/cc-on-intel-edisongalileo-part5temperature-sensor/
+-
+https://navinbhaskar.wordpress.com/2017/03/12/cc-on-intel-galieloedison-part6-light-sensor/
+-
+http://www.hardwaresecrets.com/how-analog-to-digital-converter-adc-works/
+-
+https://linux.die.net/man/3/strftime
+-
+https://stackoverflow.com/questions/448944/c-non-blocking-keyboard-input
+-
+http://wiki.seeed.cc/Grove-Button/
